@@ -9,15 +9,15 @@ from uniflow.op.model.model_op import ModelOp
 from uniflow.op.prompt import PromptTemplate
 
 
-class OpenAIModelFlow(Flow):
-    """OpenAI Model Flow Class."""
+class AzureOpenAIModelFlow(Flow):
+    """AzureOpenAI Model Flow Class."""
 
     def __init__(
         self,
         prompt_template: PromptTemplate,
         model_config: Dict[str, Any],
     ) -> None:
-        """OpenAI Model Flow Constructor.
+        """AzureOpenAI Model Flow Constructor.
 
         Args:
             prompt_template (PromptTemplate): Guided prompt template.
@@ -35,7 +35,7 @@ class OpenAIModelFlow(Flow):
                 model_config=model_config,
             )
         self._model_op = ModelOp(
-            name="openai_model_op",
+            name="azure_openai_model_op",
             model=model,
         )
 
@@ -51,7 +51,7 @@ class OpenAIModelFlow(Flow):
         return self._model_op(nodes)
 
 
-class TransformOpenAIFlow(OpenAIModelFlow):
-    """Transform OpenAI Flow Class."""
+class TransformAzureOpenAIFlow(AzureOpenAIModelFlow):
+    """Transform AzureOpenAI Flow Class."""
 
     TAG = TRANSFORM
