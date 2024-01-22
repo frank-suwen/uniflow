@@ -26,8 +26,10 @@ class LLMDataPreprocessor(AbsLLMProcessor):
             model_config (Dict[str, Any]): Model config.
         """
         # super().__init__(prompt_template={}, model_config=model_config)
-        super().__init__(prompt_template=PromptTemplate(instruction="", few_shot_prompt=[]), model_config=model_config)
-
+        super().__init__(
+            prompt_template=PromptTemplate(instruction="", few_shot_prompt=[]),
+            model_config=model_config,
+        )
 
     def _serialize(self, data: List[Dict[str, Any]]) -> List[str]:
         """Serialize data.
